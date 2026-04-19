@@ -1,45 +1,54 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 
+const API_URL = "https://task-backend-tzvn.onrender.com";
+
 function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  // Fetch all tasks
   const fetchTasks = () => {
-    fetch("http://127.0.0.1:5000/tasks")
-      .then(res => res.json())
-      .then(data => setTasks(data));
+    fetch(`${API_URL}/tasks`)
+      .then((res) => res.json())
+      .then((data) => setTasks(data))
+      .catch((err) => console.log("Error fetching tasks:", err));
   };
 
   useEffect(() => {
     fetchTasks();
   }, []);
 
+  // Add task
   const addTask = () => {
-    if (!task) return;
+    if (!task.trim()) return;
 
-    fetch("http://127.0.0.1:5000/tasks", {
+    fetch(`${API_URL}/tasks`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title: task })
-    }).then(() => {
-      setTask("");
-      fetchTasks();
-    });
+      body: JSON.stringify({ title: task }),
+    })
+      .then(() => {
+        setTask("");
+        fetchTasks();
+      })
+      .catch((err) => console.log("Error adding task:", err));
   };
 
+  // Delete task
   const deleteTask = (id) => {
-    fetch(`http://127.0.0.1:5000/tasks/${id}`, {
-      method: "DELETE"
-    }).then(() => fetchTasks());
+    fetch(`${API_URL}/tasks/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => fetchTasks())
+      .catch((err) => console.log("Error deleting task:", err));
   };
 
   return (
     <div className="app-container">
       <div className="card">
-
         <h2 className="title">✨ Task Manager</h2>
 
         <div className="input-section">
@@ -75,7 +84,6 @@ function App() {
             ))
           )}
         </ul>
-
       </div>
     </div>
   );
