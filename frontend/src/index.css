@@ -1,56 +1,139 @@
-body {
+/* Reset */
+* {
   margin: 0;
-  font-family: sans-serif;
-  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
-.app-container {
+/* Background */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
+/* Container */
+.app-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
 .card {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  width: 380px;
   padding: 20px;
-  border-radius: 16px;
-  width: 350px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
+/* Title */
 .title {
   text-align: center;
+  margin-bottom: 15px;
+  color: #333;
 }
 
+/* Input */
 .input {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
-}
-
-.add-btn {
-  padding: 10px;
-  background: green;
-  color: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
   border: none;
+  outline: none;
 }
 
-.task-item {
+/* Input section */
+.input-section {
   display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-  padding: 10px;
-  background: white;
-  border-radius: 8px;
+  gap: 10px;
+}
+
+/* Button */
+.add-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
   transition: 0.3s;
 }
 
+.add-btn:hover {
+  background: #43a047;
+}
+
+/* Task list */
+.task-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+/* Task item */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* Hover effect */
 .task-item:hover {
   transform: scale(1.03);
 }
 
+/* Completed task */
 .completed {
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+/* Buttons inside task */
+.task-item button {
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+/* Button colors */
+.task-item button:nth-child(1) {
+  background: #4caf50;
+  color: white;
+}
+
+.task-item button:nth-child(2) {
+  background: #ff9800;
+  color: white;
+}
+
+.task-item button:nth-child(3) {
+  background: #f44336;
+  color: white;
+}
+
+/* Button hover */
+.task-item button:hover {
+  opacity: 0.8;
+}
+
+/* Empty message */
+.empty {
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
 }
