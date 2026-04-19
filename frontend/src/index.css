@@ -1,0 +1,132 @@
+/* Background */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+}
+
+/* Center layout */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass card */
+.card {
+  width: 400px;
+  padding: 25px;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input section */
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Input */
+.input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Add button */
+.add-btn {
+  padding: 10px 15px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background: #45a049;
+}
+
+.add-btn:active {
+  transform: scale(0.95);
+}
+
+/* Task list */
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Task item */
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Delete button */
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: #cc0000;
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  color: #555;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
