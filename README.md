@@ -1,133 +1,91 @@
-# 🧠 Task Manager (Full Stack)
+# 🚀 Task Manager App
 
-## 🚀 Project Overview
+A full-stack Task Manager application built using React (Frontend) and Flask (Backend), deployed on Render.
 
-This is a full-stack Task Manager application built using:
+---
 
-- **Frontend:** React
-- **Backend:** Python (Flask API)
-- **Database:** SQLite
-- **Deployment:** Render (Frontend + Backend)
+## 🔧 Tech Stack
 
-The application allows users to manage daily tasks efficiently with features like adding, editing, deleting, marking complete, and searching tasks.
+- Frontend: React.js
+- Backend: Flask (Python)
+- Database: SQLite
+- Deployment: Render
 
 ---
 
 ## ✨ Features
 
-- ➕ Add new tasks
-- ✏️ Edit existing tasks
-- ❌ Delete tasks
-- ✅ Mark tasks as completed
-- 📅 Timestamp for each task
-- 🔍 Search tasks
-- 🎨 Modern UI with glassmorphism and animations
+- Add tasks
+- Delete tasks
+- Edit tasks
+- Mark tasks as completed ✅
+- Search tasks 🔍
+- Date & time display 📅
+- Responsive UI with modern design
 
 ---
 
-## 🏗️ Tech Stack
+## 🏗️ Architecture
 
-- React (Frontend UI)
-- Flask (Backend API)
-- SQLite (Database)
-- Render (Deployment)
+Frontend (React) → API Calls → Flask Backend → SQLite Database
 
 ---
 
-## ⚙️ Project Structure
+## ⚙️ API Endpoints
 
-```
-task-manager/
-│
-├── backend/
-│   ├── app.py
-│   ├── requirements.txt
-│   └── tasks.db
-│
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-├── README.md
-└── CLAUDE.md
-```
-
----
-
-## 🔌 API Endpoints
-
-| Method | Endpoint            | Description   |
-| ------ | ------------------- | ------------- |
-| GET    | /tasks              | Get all tasks |
-| POST   | /tasks              | Add new task  |
-| PUT    | /tasks/:id          | Update task   |
-| PUT    | /tasks/:id/complete | Mark complete |
-| DELETE | /tasks/:id          | Delete task   |
-
----
-
-## 🌐 Live Demo
-
-- **Frontend:** https://task-manager-dmfp.onrender.com
-- **Backend:** https://task-backend-tzvn.onrender.com
-
----
-
-## 🧪 How to Run Locally
-
-### Backend
-
-```
-cd backend
-pip install -r requirements.txt
-python app.py
-```
-
-### Frontend
-
-```
-cd frontend
-npm install
-npm start
-```
+- GET `/tasks` → Get all tasks
+- POST `/tasks` → Add new task
+- PUT `/tasks/:id` → Update task
+- DELETE `/tasks/:id` → Delete task
+- PUT `/tasks/:id/complete` → Mark complete
 
 ---
 
 ## 🤖 AI Usage
 
-- Used AI tools for:
-  - Code generation
-  - Debugging deployment issues
-  - UI enhancement suggestions
+AI tools (ChatGPT) were used for:
+- Code generation
+- Debugging errors
+- UI improvements
+- Deployment help
 
-- All generated code was reviewed and tested manually.
-
----
-
-## ⚠️ Challenges Faced
-
-- GitHub push issues (submodule problem)
-- Deployment errors on Render
-- API connection issues between frontend and backend
+All generated code was reviewed and modified.
 
 ---
 
-## 🔮 Future Improvements
+## ⚖️ Technical Decisions
 
-- User authentication (login/signup)
-- Task categories
-- Drag & drop tasks
-- Notifications/reminders
-
----
-
-## 📌 Conclusion
-
-This project demonstrates full-stack development skills including API design, frontend integration, deployment, and debugging real-world issues.
+- Used Flask for simplicity and quick API development
+- SQLite chosen for lightweight database
+- React used for dynamic UI
+- No authentication added to keep project simple
 
 ---
 
-## 👨‍💻 Author
+## ⚠️ Limitations
 
-Prashant Aryan
+- No user authentication
+- SQLite not scalable for large apps
+- No pagination
+
+---
+
+## 🚀 Future Improvements
+
+- Add login/signup system
+- Use MongoDB/PostgreSQL
+- Add notifications
+- Mobile optimization
+
+---
+
+## 🌐 Live Links
+
+- Frontend: https://task-manager-dmfp.onrender.com
+- Backend: https://task-backend-tzvn.onrender.com/tasks
+
+---
+
+## 🎯 Conclusion
+
+This project demonstrates full-stack development including API design, frontend integration, deployment, and real-world problem solving.
