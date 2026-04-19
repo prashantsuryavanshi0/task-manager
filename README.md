@@ -1,83 +1,133 @@
-# Task Manager App
+# 🧠 Task Manager (Full Stack)
 
-## 📌 Project Overview
+## 🚀 Project Overview
 
-This is a simple full-stack Task Manager application where users can add and delete tasks.
+This is a full-stack Task Manager application built using:
 
----
+- **Frontend:** React
+- **Backend:** Python (Flask API)
+- **Database:** SQLite
+- **Deployment:** Render (Frontend + Backend)
 
-## ⚙️ Tech Stack
-
-- Frontend: React
-- Backend: Python Flask (REST API)
-- Database: SQLite
-
----
-
-## 🏗️ Architecture
-
-- React frontend sends HTTP requests
-- Flask backend handles API logic
-- SQLite stores task data
-
-Flow:
-Frontend → API → Database → API → Frontend
+The application allows users to manage daily tasks efficiently with features like adding, editing, deleting, marking complete, and searching tasks.
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
-- Add new tasks
-- Delete tasks
-- Persistent storage using database
-- Clean and responsive UI
-
----
-
-## 🧠 Technical Decisions
-
-- Used Flask for simplicity and fast API development
-- Used React for dynamic UI
-- Used SQLite because it is lightweight and easy to setup
+- ➕ Add new tasks
+- ✏️ Edit existing tasks
+- ❌ Delete tasks
+- ✅ Mark tasks as completed
+- 📅 Timestamp for each task
+- 🔍 Search tasks
+- 🎨 Modern UI with glassmorphism and animations
 
 ---
 
-## ⚠️ Limitations
+## 🏗️ Tech Stack
 
-- No authentication system
-- No task update feature
-- Basic UI only
-
----
-
-## 🔮 Future Improvements
-
-- Add edit/update feature
-- Add user login system
-- Deploy application online
+- React (Frontend UI)
+- Flask (Backend API)
+- SQLite (Database)
+- Render (Deployment)
 
 ---
 
-## ▶️ How to Run
+## ⚙️ Project Structure
 
-### Backend:
+```
+task-manager/
+│
+├── backend/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── tasks.db
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── README.md
+└── CLAUDE.md
+```
 
-cd backend  
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint            | Description   |
+| ------ | ------------------- | ------------- |
+| GET    | /tasks              | Get all tasks |
+| POST   | /tasks              | Add new task  |
+| PUT    | /tasks/:id          | Update task   |
+| PUT    | /tasks/:id/complete | Mark complete |
+| DELETE | /tasks/:id          | Delete task   |
+
+---
+
+## 🌐 Live Demo
+
+- **Frontend:** https://task-manager-dmfp.onrender.com
+- **Backend:** https://task-backend-tzvn.onrender.com
+
+---
+
+## 🧪 How to Run Locally
+
+### Backend
+
+```
+cd backend
+pip install -r requirements.txt
 python app.py
+```
 
-### Frontend:
+### Frontend
 
-cd frontend  
+```
+cd frontend
+npm install
 npm start
+```
 
 ---
 
 ## 🤖 AI Usage
 
-AI tools were used for:
+- Used AI tools for:
+  - Code generation
+  - Debugging deployment issues
+  - UI enhancement suggestions
 
-- Code generation
-- Debugging
-- UI improvements
+- All generated code was reviewed and tested manually.
 
-All code was reviewed and tested manually.
+---
+
+## ⚠️ Challenges Faced
+
+- GitHub push issues (submodule problem)
+- Deployment errors on Render
+- API connection issues between frontend and backend
+
+---
+
+## 🔮 Future Improvements
+
+- User authentication (login/signup)
+- Task categories
+- Drag & drop tasks
+- Notifications/reminders
+
+---
+
+## 📌 Conclusion
+
+This project demonstrates full-stack development skills including API design, frontend integration, deployment, and debugging real-world issues.
+
+---
+
+## 👨‍💻 Author
+
+Prashant Aryan
