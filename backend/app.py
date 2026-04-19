@@ -7,17 +7,15 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# DB connection
-def get_db():
-    return sqlite3.connect("tasks.db")
-
-# Initialize DB
+# DB init
 def init_db():
-    conn = get_db()
+    conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
 
+    cursor.execute("DROP TABLE IF EXISTS tasks")  # ⚠️ one time fix
+
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS tasks (
+        CREATE TABLE tasks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
             completed INTEGER DEFAULT 0,
@@ -30,29 +28,23 @@ def init_db():
 
 init_db()
 
-# GET all tasks
+# GET
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
-    conn = get_db()
+    conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
-
     cursor.execute("SELECT id, title, completed, created_at FROM tasks")
-    rows = cursor.fetchall()
-
+    data = cursor.fetchall()
     conn.close()
-    return jsonify(rows)
+    return jsonify(data)
 
-# ADD task
+# POST
 @app.route("/tasks", methods=["POST"])
 def add_task():
     data = request.get_json()
-
-    if not data or "title" not in data:
-        return jsonify({"error": "No title"}), 400
-
     title = data["title"]
 
-    conn = get_db()
+    conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
 
     cursor.execute(
@@ -63,58 +55,45 @@ def add_task():
     conn.commit()
     conn.close()
 
-    return jsonify({"message": "Task added"})
+    return jsonify({"msg": "added"})
 
-# DELETE task
+# DELETE
 @app.route("/tasks/<int:id>", methods=["DELETE"])
 def delete_task(id):
-    conn = get_db()
+    conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
-
     cursor.execute("DELETE FROM tasks WHERE id=?", (id,))
     conn.commit()
     conn.close()
+    return jsonify({"msg": "deleted"})
 
-    return jsonify({"message": "Deleted"})
-
-# UPDATE task (edit)
+# UPDATE
 @app.route("/tasks/<int:id>", methods=["PUT"])
 def update_task(id):
     data = request.get_json()
+    title = data["title"]
 
-    if not data or "title" not in data:
-        return jsonify({"error": "No title"}), 400
-
-    conn = get_db()
+    conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
-
-    cursor.execute("UPDATE tasks SET title=? WHERE id=?", (data["title"], id))
+    cursor.execute("UPDATE tasks SET title=? WHERE id=?", (title, id))
     conn.commit()
     conn.close()
+    return jsonify({"msg": "updated"})
 
-    return jsonify({"message": "Updated"})
-
-# COMPLETE toggle
+# COMPLETE
 @app.route("/tasks/<int:id>/complete", methods=["PUT"])
 def complete_task(id):
-    conn = get_db()
+    conn = sqlite3.connect("tasks.db")
     cursor = conn.cursor()
-
     cursor.execute("""
         UPDATE tasks 
-        SET completed = CASE 
-            WHEN completed = 0 THEN 1 
-            ELSE 0 
-        END 
+        SET completed = CASE WHEN completed=0 THEN 1 ELSE 0 END 
         WHERE id=?
     """, (id,))
-
     conn.commit()
     conn.close()
+    return jsonify({"msg": "done"})
 
-    return jsonify({"message": "Toggled"})
-
-# Run server (important for Render)
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
